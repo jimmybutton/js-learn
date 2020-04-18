@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 class='display'></h1>
+    <button id='start'>Start</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reset</button>
+
+<script>
+
+let startTime;
+
+const startBtn = document.getElementById('start');
+const stopBtn = document.getElementById('stop');
+const resetBtn = document.getElementById('reset');
+
+const display = document.querySelector('.display');
+let myInterval;
+let hours, minutes, seconds, millisecs;
+let timeElapsed, displayString, previousRun;
+
+function displayTime() {
+    timeElapsed = previousRun + Date.now() - startTime;
+    hours = Math.floor(timeElapsed / 3600000);
+    millisecs = timeElapsed - hours * 3600000;
+    minutes = Math.floor(millisecs / 60000);
+    millisecs = millisecs - minutes * 60000;
+    seconds = Math.floor(millisecs / 1000);
+    millisecs = millisecs - seconds * 1000;
+    displayString = String(hours).padStart(2, '0') + ":" + String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, '0') + "." + String(millisecs).padStart(3, '0');
+    display.textContent = displayString;
+}
+
+function reset() {
+    display.textContent = '00:00:00.000';
+    previousRun = 0;
+    timeElapsed = 0;
+    clearInterval(myInterval);
+    startBtn.disabled = false;
+}
+
+startBtn.addEventListener('click', function() {
+    startTime = Date.now();
+    startBtn.disabled = true;
+    myInterval = setInterval(displayTime, 1);
+})
+
+stopBtn.addEventListener('click', function() {
+    previousRun = timeElapsed;
+    clearInterval(myInterval);
+    startBtn.disabled = false;
+})
+
+resetBtn.addEventListener('click', reset)
+
+reset();
+
+</script>
+</body>
+</html>

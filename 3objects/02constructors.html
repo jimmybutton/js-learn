@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function Person(first, last, age, gender, interests) {
+        this.name = {
+            first : first,
+            last : last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+        this.bio = function() {
+            let intro;
+            intro = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ';
+            let hobbies;
+            if (this.gender === 'male') {
+                hobbies = 'He';
+            } else if (this.gender === 'female') {
+                hobbies = 'She';
+            } else {
+                hobbies = 'It';
+            };
+            hobbies += ' likes ' + this.interests[0];
+            for (let i = 1; i < this.interests.length; i++) {
+                if (i < this.interests.length - 1) {
+                    hobbies += ', ' + this.interests[i];
+                } else {
+                    hobbies += ' and ' + this.interests[i];
+                };
+            };
+            hobbies += '.'
+            alert(intro + hobbies);
+        };
+        this.greeting = function() {
+            alert('Hi! I\'m ' + this.name.first + '.');
+        };
+    }
+    const person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'sports']);
+    const person2 = new Person('Sarah', 'Johnson', 48, 'female', ['reading']);
+    const person3 = new Person('E.', 'T.', 2731, 'unknown', ['skiing', 'drama', 'phoning home']);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loops2</title>
+</head>
+<body>
+    <h1>Create integer sqares</h1>
+    <label for="number">Enter a number </label>
+    <input type="text" id="number">
+    <button>Submit</button>
+    <p></p>
+
+    <script>
+    const input = document.querySelector('input');
+    const btn = document.querySelector('button');
+    const para = document.querySelector('p');
+
+    btn.addEventListener('click', function() {
+        let num = input.value;
+
+        for (let i = 1; i <= num; i++) {
+            let sqRoot = Math.sqrt(i);
+            if (Math.floor(sqRoot) !== sqRoot) {
+                continue;
+            }
+
+            para.textContent += i + ' ';
+        }
+    })
+    
+    </script>
+</body>
+</html>

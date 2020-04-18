@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Countdown</title>
+</head>
+<body>
+    <button>Count down</button>
+    <div class="output"></div>
+
+    <script>
+    
+    const btn = document.querySelector('button');
+    const output = document.querySelector('.output');
+
+    btn.addEventListener('click', function() {
+        for (let i = 10; i >= 0; i--) {
+            let para = document.createElement('p');
+            if (i === 10) {
+                para.textContent = i + ' Countdown';
+            } else if (i === 0) {
+                para.textContent = i + ' Blast off!';
+            } else {
+                para.textContent = i;
+            }
+            output.appendChild(para)
+        }
+    })
+    
+    </script>
+</body>
+</html>

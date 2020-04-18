@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loops</title>
+</head>
+<body>
+    <!-- For loop -->
+    <!-- <p></p> -->
+
+    <!-- break steatment -->
+    <label for="search">Search contact by name: </label>
+    <input id="search" type="text">
+    <button>Search</button>
+
+    <p></p>
+
+    <script>
+
+    // const cats = ['Bill', 'Jeff', 'Pete', 'Biggles', 'Jasmin'];
+    // let info = 'My cats are called ';
+    // const para = document.querySelector('p');
+
+    // for (let i = 0; i < cats.length; i++) {
+    //     info += cats[i] + ', ';
+    // }
+
+    // para.textContent = info;
+
+    const contacts = ['Chris:123', 'Sarah:234', 'Bill:345', 'Mary:456', 'John:567'];
+    const para = document.querySelector('p')
+    const input = document.querySelector('input')
+    const btn = document.querySelector('button')
+
+    btn.addEventListener('click', function() {
+        let searchName = input.value.toLowerCase();
+        input.value = '';
+        input.focus();
+        for (i = 0; i < contacts.length; i++) {
+            let splitContact  = contacts[i].split(':');
+            if (splitContact[0].toLowerCase() === searchName) {
+                para.textContent = splitContact[0] + '\'s number is ' + splitContact[1] + '.';
+                break;
+            } else {
+                para.textContent = 'Contact not found.';
+            }
+        }
+    });
+    </script>
+</body>
+</html>
